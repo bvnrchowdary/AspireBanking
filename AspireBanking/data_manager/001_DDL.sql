@@ -1,0 +1,19 @@
+USE AT_Dev;
+
+CREATE TABLE Transaction (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    TransactionDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    Amount FLOAT NOT NULL,
+    Description TEXT NOT NULL,
+    TransactionType VARCHAR(25) NOT NULL,
+    AccountId BIGINT NOT NULL
+);
+
+CREATE TABLE AccountDetails (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    AccountNumber VARCHAR(10) UNIQUE NOT NULL,
+    AccountHolderName VARCHAR(50) NOT NULL,
+    AccountType VARCHAR(10) NOT NULL CHECK (AccountType IN ('SAVING', 'CURRENT')),
+    Balance FLOAT NOT NULL,
+    LastUpdateDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
